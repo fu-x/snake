@@ -1,8 +1,10 @@
 # JavaScript贪吃蛇小游戏——学习JavaScript的面向对象编程
 
 支持移动端和pc端哦。
+
 **Github代码地址：**[https://github.com/fu-x/snake](https://github.com/fu-x/snake)
-**游戏预览：**[coolxiang.top/snake](coolxiang.top/snake)
+
+**游戏预览：**[http://coolxiang.top/snake](http://coolxiang.top/snake)
 
 **编程思想：面向对象**
 
