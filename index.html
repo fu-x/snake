@@ -9,14 +9,58 @@
   <script src="./snake.js"></script>
   <script src="./game.js"></script>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: #662244;
+    }
     #map {
-      width: 600px;
-      height: 500px;
+      width: 94vw;
+      height: 80vh;
+      max-width: 400px;
+      max-height: 600px;
       background-color: rgb(2, 38, 44);
       position: relative;
-      margin: 100px auto;
-      border: 10px solid #663300;
+      margin: 0 auto;
+      border: 3vw solid #663300;
       box-shadow: 4px 4px 4px #000 inset;
+    }
+    .btn {
+      width: 100vw;
+      height: 20vh;
+      background-color: #662244;
+      display: flex;
+    }
+    .title {
+      width: 50vw;
+      height: 20vh;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    .title h1 {
+      font-size: 1.5rem;
+      margin-bottom: 5vh;
+    }
+    .container {
+      width: 50vw;
+      height: 15vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .middle {
+      display: flex;
+      width: 30vw;
+      justify-content: space-between;
+    }
+    .container button {
+      width: 30px;
+      height: 30px;
+      font-size: 1.2rem;
+
     }
   </style>
 </head>
@@ -24,12 +68,31 @@
   <div id="map">
 
   </div>
+  <div class="btn">
+    <div class="title">
+      <h1>操作面板</h1>
+      <p>键盘：上下左右键控制</p>
+    </div>
+    <div class="container">
+      <div class="top"><button id="up">⬆</button></div>
+      <div class="middle"><button id="left">⬅</button><button id="right">➡</button></div>
+      <div class="bottom"><button id="down">⬇</button></div>
+    </div>
+  </div>
   <script>
     let map = document.getElementById('map')
     let newGame = new Game(map);
     newGame.start();
     document.addEventListener("keydown",keydown);
     document.addEventListener("keyup",keyup);
+    let up = document.getElementById('up');
+    let left = document.getElementById('left');
+    let right = document.getElementById('right');
+    let down = document.getElementById('down');
+    up.addEventListener("click", ()=>newGame.control(38));
+    right.addEventListener("click", ()=>newGame.control(39));
+    down.addEventListener("click", ()=>newGame.control(40));
+    left.addEventListener("click", ()=>newGame.control(37));
     let flag = true; // 节流阀
     function keydown(event){
       if(flag){
@@ -41,7 +104,7 @@
             event.returnValue = false;
           }
         }
-        newGame.control(event);
+        newGame.control(event.keyCode);
       }
     }
     function keyup(){

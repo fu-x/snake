@@ -15,7 +15,7 @@
   }
   // 渲染最新的小蛇
   Snake.prototype.render = function () {
-    remove();
+    this.remove();
     this.bodys.forEach((item, index)=>{
       bodyArr.push(document.createElement('div'));
       this.map.appendChild(bodyArr[index]);
@@ -53,7 +53,7 @@
     this.render();
   }
   // 删除之前的小蛇
-  function remove(){
+  Snake.prototype.remove = function(){
     bodyArr.forEach(item=>{
       item.remove();
     })
